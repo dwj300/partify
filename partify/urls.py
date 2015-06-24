@@ -18,6 +18,7 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
+    url('', include('social.apps.django_app.urls', namespace='social')),
     url(r'^$', 'frontend.views.index', name='index'),
     url(r'^add_party/$', 'backend.views.add_party', name='add_party'),
     url(r'^party/([0-9]+)/$', 'frontend.views.party', name='party_details'),
