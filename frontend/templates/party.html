@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Party: {{ party.name }}</h1>
+<p>Current Song List:</p>
+<ol>
+{% for song in party.get_top_songs %}
+<li>(<a href="{% url 'add_vote' song.id %}">{{song.votes}}</a>) - {{ song.name }}</li>
+{% endfor %}
+</ol>
+<p>Add a new song:</p>
+<form action="{% url 'add_song' %}" method="POST">
+{% csrf_token %}
+<input type="hidden" name="party" value="{{ party.id }}">
+<input type="text" name="name">
+<input type="submit">
+{% endblock %}

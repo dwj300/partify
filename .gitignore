@@ -60,3 +60,6 @@ target/
 bin/
 lib/
 include/
+
+# SQLite
+*.sqlite3

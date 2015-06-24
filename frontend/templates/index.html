@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Welcome to Partify</h1>
+<br>
+<p>Here is a list of parties:
+<ul>
+{% for party in parties %}
+<li><a href="{{ party.get_absolute_url }}">{{ party.name }}</a></li>
+{% endfor %}
+</ul>
+<p>Add a new party: </p>
+<form action="{% url 'add_party' %}" method="POST">
+{% csrf_token %}
+<input type="text" name="name">
+<input type="submit">
+</form>
+{% endblock %}
